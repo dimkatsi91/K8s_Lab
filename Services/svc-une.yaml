@@ -1,0 +1,18 @@
+piVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    type: webserver
+  name: nginx-nodeport-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30080
+  selector:
+    type: webserver
+  type: NodePort
+status:
+  loadBalancer: {}

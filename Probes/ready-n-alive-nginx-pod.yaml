@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    type: webserver
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    ports:
+      - containerPort: 8080
+    readinessProbe:
+      exec:
+        command: 
+        - ls 
+        - "/etc"
+      initialDelaySeconds: 30
+    livenessProbe:
+      exec:
+        command:
+          - echo
+          - "alive"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+

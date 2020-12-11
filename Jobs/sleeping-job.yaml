@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: sleeping-job
+spec:
+  backoffLimit: 15
+  activeDeadlineSeconds: 45
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: debian
+        name: sleeping-cont
+        resources: {}
+        command: ["/bin/sh", "-c", "sleep 3600"]
+      restartPolicy: Never
+status: {}
+

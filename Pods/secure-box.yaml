@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    type: sleeping
+  name: sleeping-pod
+spec:
+  containers:
+  - image: busybox
+    name: sleep
+    resources: {}
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 2000
+    command:
+      - sleep
+      - "3600"
+    readinessProbe:
+      exec:
+        command:
+          - /bin/sh
+          - -c
+          - echo
+    #livenessProbe:
+    #  exec:
+    #    command:
+    #      - sleep
+    #      - "3600"
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 2000
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always

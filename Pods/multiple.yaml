@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    type: webserver
+  name: nginx
+spec:
+  containers:
+  # 1st: nginx Container
+  - image: nginx
+    name: webserver-container
+    ports:
+      - containerPort: 80
+  # 2nd fluentd logging container
+  - image: fluent/fluentd
+    name: logger-container
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
