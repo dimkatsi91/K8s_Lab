@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: net-pol-example
+  namespace: default
+spec:
+  # Target Pods: which have label app: webserver
+  # will be targeted with this podSelector
+  podSelector:
+    matchLabels:
+      app: webserver
+  # Type of traffic is Ingress/Incoming for this example
+  policyTypes:
+  - Ingress
+  # ingress traffic from Pods with label app: log 
+  # will be allowed to send traffic to the target Pods
+  # with label app: webserver
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: log
+    ports:
+    - protocol: TCP
+      port: 6379
