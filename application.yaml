@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: argocd-first-test
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dimkatsi91/K8s_Lab.git
+    targetRevision: HEAD
+    path: Pods
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test-ns
+
+  syncPolicy:
+    syncOptions:
+    - createNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
