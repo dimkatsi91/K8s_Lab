@@ -31,4 +31,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Install all k8s resources (simulation mode only)
-        run: for file in $GITHUB_WORKSPACE/{Pods,Netpol,Probes,Services,Volumes,ConfigMaps,Deployments,Resources_Mgmnt,Jobs,Secrets}; do kubectl apply -f $file --dry-run=client; done
+        run: | 
+          echo -e "Working directory: $GITHUB_WORKSPACE\n"  
+          for file in $GITHUB_WORKSPACE/{Pods,Netpol,Probes,Services,Volumes,ConfigMaps,Deployments,Resources_Mgmnt,Jobs,Secrets}; do kubectl apply -f $file --dry-run=client; done
+          
