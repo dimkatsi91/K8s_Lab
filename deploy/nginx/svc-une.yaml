@@ -5,6 +5,7 @@ metadata:
   labels:
     type: webserver
   name: nginx-nodeport-svc
+  namespace: nginx-ns
 spec:
   ports:
   - port: 80
