@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    type: webserver
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    ports:
+      - containerPort: 80
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
