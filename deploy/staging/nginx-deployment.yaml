@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+  name: nginx-deployment
+  namespace: nginx-ns
+spec:
+  replicas: 2
+  templates:
+    containers:
+      - image: nginx:1.20
+        name: nginx
+
