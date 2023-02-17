@@ -1,12 +1,12 @@
-# Apply the pod
+- Apply the pod
 
 ```kubectl apply -f deployment.yaml```
 
-# Apply the service
+- Apply the service
 
 ```kubectl apply -f service.yaml```
 
-# Check nginx welcome page
+- Check nginx welcome page
 
 ```
 kubectl get svc nginx
@@ -16,11 +16,11 @@ nginx   NodePort   10.99.227.58   <none>        80:30088/TCP   12m
 curl $(minikube ip):30088
 ```
 
-# Apply the ingress
+- Apply the ingress
 
 ```kubectl apply -f ingress.yaml```
 
-# Add info under /etc/hosts file in the form of : $(minikube ip) <host-name>
+- Add info under /etc/hosts file in the form of : $(minikube ip) <host-name>
 
 ```
 k get ing
